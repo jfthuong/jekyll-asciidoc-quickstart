@@ -1,0 +1,245 @@
+<!doctype html>
+<!--[if IE 9]>
+<html class="lt-ie10" lang="en"> <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argparse Intro</title>
+    <meta name="description" content="The Jekyll AsciiDoc Quickstart project is a leg-up in starting your own website hosted on GitHub with content based in AsciiDoc.">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/coderay.css">
+    <link rel="stylesheet" href="css/asciidoctor.css">
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="js/toc.js"></script>
+</head>
+<body>
+
+
+<!-- Nav Bar -->
+
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+            <h1>
+                <a href="">Jekyll AsciiDoc Quickstart</a>
+            </h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns" role="content">
+
+        <h1>ArgParse (Introduction)</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#purpose">Purpose</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#example_of_code">Example of code</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="purpose">Purpose</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The module <strong>argparse</strong> can be used to parse options and arguments when
+launching a Python script.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="links">Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://pymotw.com/2/argparse"><strong>PyMOTW</strong></a> (Python Module of the Week):
+provides a great description of most modules with clear examples.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installation">Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Module already installed with ActivePython.</p>
+</div>
+<div class="paragraph">
+<p>However, it could be updated with following command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pip install -U argparse</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example_of_code">Example of code</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+</pre></td>
+  <td class="code"><pre><span class="keyword">from</span> <span class="include">argparse</span> <span class="keyword">import</span> <span class="include">ArgumentParser</span>, <span class="include">SUPPRESS</span>
+
+
+<span class="keyword">def</span> <span class="function">do_something</span>(options):
+    <span class="docstring"><span class="delimiter">'''</span><span class="content">A function that does something</span><span class="delimiter">'''</span></span>
+    print(<span class="predefined">str</span>(options))
+
+
+<span class="keyword">if</span> __name__ == <span class="string"><span class="delimiter">'</span><span class="content">__main__</span><span class="delimiter">'</span></span>:
+    prog = <span class="string"><span class="delimiter">&quot;</span><span class="content">test_ArgParse</span><span class="delimiter">&quot;</span></span>
+    help_string = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="char">\
+</span><span class="content">    Purpose: Check how to use ArgParse</span><span class="content">
+</span><span class="content">    </span><span class="delimiter">&quot;&quot;&quot;</span></span>
+
+    parser = ArgumentParser (
+        description=help_string, prog=prog,
+    )
+
+    <span class="comment"># NOTES: Default are the following</span>
+    <span class="comment"># * action = 'store'</span>
+    <span class="comment"># * type = 'str'</span>
+    <span class="comment"># * metavar = variable where option is stored</span>
+
+    <span class="comment"># Arguments</span>
+    parser.add_argument(<span class="string"><span class="delimiter">'</span><span class="content">arg1</span><span class="delimiter">'</span></span>)
+    parser.add_argument(<span class="string"><span class="delimiter">'</span><span class="content">arg_int</span><span class="delimiter">'</span></span>, type=<span class="predefined">int</span>)  <span class="comment"># check type</span>
+    parser.add_argument(<span class="string"><span class="delimiter">'</span><span class="content">arg3</span><span class="delimiter">'</span></span>, type=<span class="predefined">int</span>, metavar=<span class="string"><span class="delimiter">'</span><span class="content">INT</span><span class="delimiter">'</span></span>)  <span class="comment"># name in help</span>
+    parser.add_argument(<span class="string"><span class="delimiter">'</span><span class="content">other_args</span><span class="delimiter">'</span></span>, type=<span class="predefined">int</span>, nargs=<span class="string"><span class="delimiter">'</span><span class="content">*</span><span class="delimiter">'</span></span>)  <span class="comment"># Optional args</span>
+
+    <span class="comment"># Modes</span>
+    modes = parser.add_argument_group (<span class="string"><span class="delimiter">&quot;</span><span class="content">Modes</span><span class="delimiter">&quot;</span></span>)
+    modes.add_argument (
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-v</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">--verbose</span><span class="delimiter">&quot;</span></span>,
+        action=<span class="string"><span class="delimiter">&quot;</span><span class="content">store_true</span><span class="delimiter">&quot;</span></span>, dest=<span class="string"><span class="delimiter">&quot;</span><span class="content">verbose</span><span class="delimiter">&quot;</span></span>, default=<span class="predefined-constant">False</span>,
+        help=<span class="string"><span class="delimiter">&quot;</span><span class="content">Display additional information messages</span><span class="delimiter">&quot;</span></span>
+    )
+    modes.add_argument (
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">--debug</span><span class="delimiter">&quot;</span></span>, action=<span class="string"><span class="delimiter">&quot;</span><span class="content">store_true</span><span class="delimiter">&quot;</span></span>, help=SUPPRESS
+        <span class="comment"># Note: by default, 'dest' is the name of option with '--'</span>
+        <span class="comment"># Note: default value for &quot;store_true&quot; is False</span>
+    )
+
+    options = parser.parse_args ()
+    do_something(options)</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+</div>
+
+    </div>
+
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+
+    <aside class="large-3 columns">
+
+        <h4>Posts</h4>
+        <ul id="posts" class="posts nav">
+            
+            <li><a href="./2015/01/01/ArgParse-Intro.html"></a></li>
+            
+        </ul>
+
+        <div class="panel">
+            <h5>Featured</h5>
+
+            <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon
+                nulla pork belly cupidatat meatloaf cow.</p>
+        </div>
+
+    </aside>
+
+    <!-- End Sidebar -->
+</div>
+
+<!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-12 columns">
+                <p>Footer</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+$(document).foundation();
+var doc = document.documentElement;
+doc.setAttribute('data-useragent', navigator.userAgent);
+</script>
+</body>
+</html>
