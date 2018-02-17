@@ -5,11 +5,6 @@ Command line and options parser
 :showtitle:
 :page-excerpt: Excerpt goes here.
 :page-root: ../../../
-:source-highlighter: pygments
-:pygments-style: manni
-:source-language: python
-:icons: font
-:toc: left
 
 == Purpose
 
