@@ -2,6 +2,8 @@
 :showtitle:
 :page-title: Jekyll AsciiDoc Quickstart
 :page-description: A forkable blog-ready Jekyll site using AsciiDoc
+:source-language: python
+:icons: font
 
 You've successfully set up and deployed an Jekyll website powered by AsciiDoc using the https://github.com/asciidoctor/jekyll-asciidoc-quickstart[*Jekyll AsciiDoc Quickstart*] project. If everything is in order then changes to the AsciiDoc content will be automatically published to your `gh_pages` branch and hosted via Jekyll and Github.
 
@@ -28,6 +30,35 @@ To display a list of posts, use Jekyll syntax similar to the following:
 {% endfor %}
 ----
 
+
+[source,python,linenums]
+----
+import logging
+
+def printErr(msg, type='error'):
+    sys.stderr.write (msg + "\n")
+    logging.info (msg)
+    status[type] += 1
+
+
+class DICT_2_OBJ(object):
+    '''Class to tranform a dictionary into an object'''
+    def __init__(self, fields): self.__dict__=fields
+
+class TestCase():
+    """"
+    Generic class for Test Case
+    """
+    def __init__(self, id='TC-UNKNOWN', tp=None):
+        self.id = id
+        self.reqs = list()
+        self.tp = tp
+
+    def __lt__(self, other):
+        return self.id < other.id
+----
+
+NOTE: This is a note!
 === Update Look and feel
 
 The layout provided with the https://github.com/asciidoctor/jekyll-asciidoc-quickstart[Jekyll AsciiDoc Quickstart] project is based on http://foundation.zurb.com[Foundation], a responsive design css framework. You're free to update the layout by editing the `_layouts/default.html` file and css under the `css` directory.
