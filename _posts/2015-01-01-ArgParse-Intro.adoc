@@ -1,4 +1,3 @@
-
 = ArgParse (Introduction)
 Command line and options parser
 :page-navtitle: ArgParse (Introduction)
