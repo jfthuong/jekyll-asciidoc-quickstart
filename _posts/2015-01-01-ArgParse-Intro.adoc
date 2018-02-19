@@ -4,6 +4,9 @@ Command line and options parser
 :showtitle:
 :page-excerpt: Excerpt goes here.
 :page-root: ../../../
+:icons: font
+:toc: left
+
 
 == Purpose
 
